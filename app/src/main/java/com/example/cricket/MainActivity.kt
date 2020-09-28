@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         // get reference to button
         val btnSix =findViewById<Button>(R.id.btnSix)
         val btnFour =findViewById<Button>(R.id.btnFour)
-        val btn4singles =findViewById<Button>(R.id.btn4singles)
+        val btnZero =findViewById<Button>(R.id.btnZero)
         val btn3singles =findViewById<Button>(R.id.btn3singles)
         val btn2singles =findViewById<Button>(R.id.btn2singles)
         val btn1singles =findViewById<Button>(R.id.btn1singles)
@@ -50,8 +50,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //handle button click
-        btn4singles.setOnClickListener{
-            buttonClickService(4)
+        btnZero.setOnClickListener{
+            buttonClickService(0)
         }
 
         //handle button click
