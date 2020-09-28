@@ -24,14 +24,27 @@ class MainActivity : AppCompatActivity() {
         val textOvers = findViewById<TextView>(R.id.textOvers)
         val textBalls = findViewById<TextView>(R.id.textBalls)
 
+        class BallDataFrame constructor(
+            var run: Int = 0,
+            var batsmanName: String = "",
+            var bowlerName: String = "",
+            var wicketStatus: String = "",
+            var oversBall: Float = 0f,
+            var ballLegalExtra: String = ""
+        )
+
+        var ballFrameList = mutableListOf<BallDataFrame>()
+
         var globalNumBalls: Int = 0;
         var globalNumOvers: Int = 0;
 
         fun buttonClickService(btnValue: Int) {
-            textScore.text = (textScore.text.toString().toInt() + btnValue).toString()
+            ballFrameList.add(BallDataFrame(btnValue,"John", "Gayle", "not out", 0.1f, "le"))
+            textScore.text = (textScore.text.toString().toInt() + ballFrameList.last().run).toString()
             textRawScore.text = textRawScore.text.toString() + btnValue.toString()
             globalNumBalls = globalNumBalls.inc()
-            textBalls.text = (globalNumBalls).toString()
+            //textBalls.text = (globalNumBalls).toString()
+            textBalls.text = (ballFrameList[0].run).toString()
             if (globalNumBalls%6==0){
                 globalNumOvers = globalNumOvers.inc()
                 textOvers.text = (globalNumOvers).toString()
