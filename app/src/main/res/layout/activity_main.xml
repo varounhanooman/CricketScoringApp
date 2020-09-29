@@ -6,16 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btnBowled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bowled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
+
+    <Button
+        android:id="@+id/btnCaught"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="caught"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
+
+    <Button
+        android:id="@+id/btnRunOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="run out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
+
+    <Button
+        android:id="@+id/btnNoBall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="no ball"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.696" />
+
+    <Button
+        android:id="@+id/btnWide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wide"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.814" />
+
     <TextView
         android:id="@+id/textScoreLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Score"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.264"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.053" />
+
+    <TextView
+        android:id="@+id/textWicketLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wickets"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053" />
 
     <TextView
         android:id="@+id/textScore"
@@ -23,10 +96,23 @@
         android:layout_height="wrap_content"
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.103" />
+
+    <TextView
+        android:id="@+id/textWickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103" />
 
     <TextView
         android:id="@+id/textRawScoreLabel"
@@ -95,75 +181,111 @@
         app:layout_constraintVertical_bias="0.4" />
 
     <Button
-        android:id="@+id/btnSix"
+        android:id="@+id/btn5runs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Six"
+        android:text="5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.598" />
 
     <Button
-        android:id="@+id/btnFour"
+        android:id="@+id/btn1run"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Four"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <Button
+        android:id="@+id/btn4runs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598" />
+
+    <Button
+        android:id="@+id/btn6runs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.696" />
+
+    <Button
+        android:id="@+id/btnBye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bye"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.814" />
 
     <Button
-        android:id="@+id/btn4singles"
+        android:id="@+id/btnLegBye"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4 single"
+        android:text="legbye"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.814" />
 
     <Button
-        android:id="@+id/btn3singles"
+        android:id="@+id/btn3runs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3 single"
+        android:text="3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.598" />
 
     <Button
-        android:id="@+id/btn2singles"
+        android:id="@+id/btn0runs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2 single"
+        android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <Button
-        android:id="@+id/btn1singles"
+        android:id="@+id/btn2runs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1 single"
+        android:text="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.499" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
