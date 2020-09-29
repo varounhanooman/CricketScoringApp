@@ -1,5 +1,6 @@
 package com.example.cricket
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -14,15 +15,24 @@ class NameList : AppCompatActivity() {
         setContentView(R.layout.activity_name_list)
 
         val btnAddBatsman = findViewById<Button>(R.id.btnAddBatsman)
+        val btnBack = findViewById<Button>(R.id.btnBack)
+        val batsmanName = findViewById<TextView>(R.id.batsmanName)
 
         //handle button click
         btnAddBatsman.setOnClickListener{
-            val tv_dynamic = EditText(this)
-            //tv_dynamic.textSize = 20f
-            tv_dynamic.hint = "Enter Batsman Name"
+            val tv_dynamic = TextView(this)
+            tv_dynamic.textSize = 20f
+            tv_dynamic.text = batsmanName.text.toString()
+            batsmanName.text = ""
+            batsmanName.hint = "Enter Batsman Name"
             val layout = findViewById<LinearLayout>(R.id.linearLayoutNames)
 
             layout.addView(tv_dynamic)
+        }
+
+        btnBack.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
     }

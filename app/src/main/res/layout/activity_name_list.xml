@@ -30,23 +30,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.953" />
 
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAddBatsman"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <LinearLayout
         android:id="@+id/linearLayoutNames"
-        android:layout_width="409dp"
-        android:layout_height="515dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="414dp"
+        android:layout_height="464dp"
+        android:layout_marginTop="76dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="-2dp">
+        tools:layout_editor_absoluteX="-4dp">
 
-        <EditText
-            android:id="@+id/batsmanName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter Batsman Name"
-            android:inputType="textPersonName"
-            android:text="" />
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/batsmanName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Batsman Name"
+        android:inputType="textPersonName"
+        android:text=""
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="112dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
