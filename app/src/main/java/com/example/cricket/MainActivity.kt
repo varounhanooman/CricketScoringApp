@@ -39,9 +39,27 @@ class MainActivity : AppCompatActivity() {
         var globalNumBalls: Int = 0;
         var globalNumOvers: Int = 0;
 
+        val defaulName: String = "DefaultBatsman"
+
+        var batsmanArray: ArrayList<String> = arrayListOf("Test")
+
+        if (intent.getStringArrayListExtra("BatsmanList") != null){
+            val myArray: ArrayList<String> = intent.getStringArrayListExtra("BatsmanList")
+            //batsmanArray = myArray.toArray()
+            System.out.println(myArray);
+
+        }
+
+
+
         fun buttonClickService(btnValue: Int) {
-            ballFrameList.add(BallDataFrame(btnValue,"John", "Gayle", "not out", 0.1f, "le"))
+            if (intent.getStringArrayListExtra("BatsmanList") != null){
+                ballFrameList.add(BallDataFrame(btnValue,batsmanArray.last(), "Gayle", "not out", 0.1f, "le"))
+            }else{
+                ballFrameList.add(BallDataFrame(btnValue,defaulName, "Gayle", "not out", 0.1f, "le"))
+            }
             textScore.text = (textScore.text.toString().toInt() + ballFrameList.last().run).toString()
+            textScore.text = batsmanArray[0]
             textRawScore.text = textRawScore.text.toString() + btnValue.toString()
             globalNumBalls = globalNumBalls.inc()
             //textBalls.text = (globalNumBalls).toString()
@@ -51,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                 textOvers.text = (globalNumOvers).toString()
                 textRawScore.text = textRawScore.text.toString() + "|"
             }
+
         }
 
         //handle button click
