@@ -1,5 +1,6 @@
 package com.example.cricket
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         val btnWide = findViewById<Button>(R.id.btnWide)
         val btnBye = findViewById<Button>(R.id.btnBye)
         val btnLegBye = findViewById<Button>(R.id.btnLegBye)
+
         val textScore = findViewById<TextView>(R.id.textScore)
         val textRawScore = findViewById<TextView>(R.id.textRawScore)
         val textOvers = findViewById<TextView>(R.id.textOvers)
@@ -120,9 +122,14 @@ class MainActivity : AppCompatActivity() {
         btn5runs.setOnClickListener {
             btnRunsClickService(5)
         }
-        //handle button click
+
         btn6runs.setOnClickListener{
             btnRunsClickService(6)
+        }
+
+        btnNameList.setOnClickListener{
+            val intent = Intent(this, NameList::class.java)
+            startActivity(intent)
         }
 
 
