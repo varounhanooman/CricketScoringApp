@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         //Calculate Legal Runs
 
-        fun buttonClickService(btnValue: Int) {
+        fun btnRunsClickService(btnValue: Int) {
             ballFrameList.add(BallDataFrame(btnValue,"John", "Gayle", "not out", 0.1f, "le"))
             textScore.text = (textScore.text.toString().toInt() + ballFrameList.last().run).toString()
             textRawScore.text = textRawScore.text.toString() + btnValue.toString()
