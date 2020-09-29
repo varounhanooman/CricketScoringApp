@@ -1,5 +1,6 @@
 package com.example.cricket
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -13,12 +14,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // get reference to button
-        val btnSix =findViewById<Button>(R.id.btnSix)
-        val btnFour =findViewById<Button>(R.id.btnFour)
-        val btnZero =findViewById<Button>(R.id.btnZero)
-        val btn3singles =findViewById<Button>(R.id.btn3singles)
-        val btn2singles =findViewById<Button>(R.id.btn2singles)
-        val btn1singles =findViewById<Button>(R.id.btn1singles)
+        val btnSix = findViewById<Button>(R.id.btnSix)
+        val btnFour = findViewById<Button>(R.id.btnFour)
+        val btnZero = findViewById<Button>(R.id.btnZero)
+        val btn3singles = findViewById<Button>(R.id.btn3singles)
+        val btn2singles = findViewById<Button>(R.id.btn2singles)
+        val btnNameList = findViewById<Button>(R.id.btnNameList)
         val textScore = findViewById<TextView>(R.id.textScore)
         val textRawScore = findViewById<TextView>(R.id.textRawScore)
         val textOvers = findViewById<TextView>(R.id.textOvers)
@@ -78,8 +79,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         //handle button click
-        btn1singles.setOnClickListener{
+        btnZero.setOnClickListener{
             buttonClickService(1)
+        }
+
+        btnNameList.setOnClickListener{
+            val intent = Intent(this, NameList::class.java)
+            startActivity(intent)
         }
 
 
