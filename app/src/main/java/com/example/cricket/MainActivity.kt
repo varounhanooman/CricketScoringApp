@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val textOvers = findViewById<TextView>(R.id.textOvers)
         val textBalls = findViewById<TextView>(R.id.textBalls)
         val textWickets = findViewById<TextView>(R.id.textWickets)
+        val textExtras = findViewById<TextView>(R.id.textExtras)
 
         class BallDataFrame constructor(
             var run: Int = 0,
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         var globalNumBalls: Int = 0;
         var globalNumOvers: Int = 0;
         var globalNumWickets: Int = 0;
+        var globalNumExtras: Int = 0;
 
 
         //Calculate Legal Runs
@@ -79,8 +81,8 @@ class MainActivity : AppCompatActivity() {
             textScore.text = batsmanArray[0]
             textRawScore.text = textRawScore.text.toString() + btnValue.toString()
             globalNumBalls = globalNumBalls.inc()
-            //textBalls.text = (globalNumBalls).toString()
-            textBalls.text = (ballFrameList[0].run).toString()
+            textBalls.text = (globalNumBalls).toString()
+            //textBalls.text = (ballFrameList[0].run).toString()
             if (globalNumBalls%6==0){
                 globalNumOvers = globalNumOvers.inc()
                 textOvers.text = (globalNumOvers).toString()
@@ -92,14 +94,19 @@ class MainActivity : AppCompatActivity() {
         //Calculate Wickets
         fun btnWicketClickService(btnHowOut: String){
             globalNumBalls = globalNumBalls.inc()
+            textBalls.text = (globalNumBalls).toString()
+            textRawScore.text = textRawScore.text.toString() + "W"
             if(btnHowOut.equals("bowled",true)){
-
+                globalNumWickets = globalNumWickets.inc()
+                textWickets.text = globalNumWickets.toString()
             }
-            if(btnHowOut.equals("caught",true)){
-
+            else if(btnHowOut.equals("caught",true)){
+                globalNumWickets = globalNumWickets.inc()
+                textWickets.text = globalNumWickets.toString()
             }
-            if(btnHowOut.equals("run out",true)){
-
+            else if(btnHowOut.equals("run out",true)){
+                globalNumWickets = globalNumWickets.inc()
+                textWickets.text = globalNumWickets.toString()
             }
 
             if (globalNumBalls%6==0){
@@ -110,41 +117,101 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Calculate Extras
-        fun btnExtrasClickService(BtnExtra: String){
+        fun btnExtrasClickService(btnExtra: String){
+            globalNumExtras = globalNumExtras.inc()
+            textExtras.text = globalNumExtras.toString()
+            textScore.text = (textScore.text.toString().toInt() + 1).toString()
+            if(btnExtra.equals("wide", true)){
+                textRawScore.text = textRawScore.text.toString() + "wd"
+            }
+            else if(btnExtra.equals("no ball", true)) {
+                textRawScore.text = textRawScore.text.toString() + "nb"
+            }
+        }
+
+        fun btnByesClickService(btnBye: String){
+            globalNumExtras = globalNumExtras.inc()
+            textExtras.text = globalNumExtras.toString()
+            textScore.text = (textScore.text.toString().toInt() + 1).toString()
+            if(btnBye.equals("leg bye", true)){
+                globalNumBalls = globalNumBalls.inc()
+                textBalls.text = (globalNumBalls).toString()
+                textRawScore.text = textRawScore.text.toString() + "lb"
+            }
+            else if(btnBye.equals("bye", true)){
+                globalNumBalls = globalNumBalls.inc()
+                textBalls.text = (globalNumBalls).toString()
+                textRawScore.text = textRawScore.text.toString() + "b"
+            }
+
+            if (globalNumBalls%6==0){
+                globalNumOvers = globalNumOvers.inc()
+                textOvers.text = (globalNumOvers).toString()
+                textRawScore.text = textRawScore.text.toString() + "|"
+            }
 
         }
 
-        //handle button click
+        //Handle button click for runs
+        //No Runs
         btn0runs.setOnClickListener{
             btnRunsClickService(0)
         }
-
-        //handle button click
+        //1 Run
         btn1run.setOnClickListener{
             btnRunsClickService(1)
         }
-
-        //handle button click
+        //2 Runs
         btn2runs.setOnClickListener{
             btnRunsClickService(2)
         }
-
-        //handle button click
+        //3 Runs
         btn3runs.setOnClickListener{
             btnRunsClickService(3)
         }
-
-        //handle button click
+        //4 Runs
         btn4runs.setOnClickListener{
             btnRunsClickService(4)
         }
-
+        //5 Runs
         btn5runs.setOnClickListener {
             btnRunsClickService(5)
         }
-
+        //6 Runs
         btn6runs.setOnClickListener{
             btnRunsClickService(6)
+        }
+
+        //Handle button click for Wickets
+        //Bowled
+        btnBowled.setOnClickListener {
+            btnWicketClickService("bowled")
+        }
+        //Caught
+        btnCaught.setOnClickListener {
+            btnWicketClickService("caught")
+        }
+        //RunOut
+        btnRunOut.setOnClickListener {
+            btnWicketClickService("run out")
+        }
+
+        //Handle button click for Extras
+        //Wide
+        btnWide.setOnClickListener {
+            btnExtrasClickService("wide")
+        }
+        //No Ball
+        btnNoBall.setOnClickListener {
+            btnExtrasClickService("no ball")
+        }
+        //Leg Bye
+        btnLegBye.setOnClickListener {
+            btnByesClickService("leg bye")
+        }
+        //Bye
+        btnBye.setOnClickListener {
+            btnByesClickService("bye")
         }
 
         btnNameList.setOnClickListener{
