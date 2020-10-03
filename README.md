@@ -11,14 +11,18 @@ Proposed data frame
 
 object ball data frame array - 
 
+```json
 {
-	{2,"Batsman John","Bowler Paul", "No Out",0.1,"le",},
-	{3,"Batsman John","Bowler Paul", "No Out",0.2,"le",},
-	{1,"Batsman Jeremey","Bowler Paul", "No Out",0.3,"le",},
-	{6,"Batsman John","Bowler Paul", "No Out",0.4,"le",},
-	{0,"Batsman John","Bowler Paul", "Catch Out",0.5,'"le",},
-	{2,"Batsman Ken","Bowler Paul", "No Out",0.6,"le",},
-	{1,"Batsman Jeremey","Bowler Gayle", "No Out",1.1,"le",},
-  {1,"Batsman Ken","Bowler Gayle", "No Out",1.11,"il_w",},
-  {0,"Batsman Jeremey","Bowler Gayle", "No Out",1.2,"le_by"},
+	"balldatafram":[
+		{"Runs":"2","Batsman":"John","Bowler":"Paul", "Catch_Status":"No Out","overballcount":"0.1","legality":"le"},
+		{"Runs":"3","Batsman":"John","Bowler":"Paul", "Catch_Status":"No Out","overballcount":"0.2","legality":"le"},
+		{"Runs":"1","Batsman":"Jeremey","Bowler":"Paul", "Catch_Status":"No Out","overballcount":"0.3","legality":"le"},
+		{"Runs":"6","Batsman":"John","Bowler":"Paul", "Catch_Status":"No Out","overballcount":"0.4","legality":"le"},
+		{"Runs":"0","Batsman":"John","Bowler":"Paul", "Catch_Status":"Catch Out","overballcount":"0.5","legality":"le"},
+		{"Runs":"2","Batsman":"Ken","Bowler":"Paul", "Catch_Status":"No Out","overballcount":"0.6","legality":"le"},
+		{"Runs":"1","Batsman":"Jeremey","Bowler":"Gayle", "Catch_Status":"No Out","overballcount":"1.1","legality":"le"},
+		{"Runs":"1","Batsman":"Ken","Bowler":"Gayle", "Catch_Status":"No Out","overballcount":"1.11","legality":"il_w"},
+		{"Runs":"0","Batsman":"Jeremey","Bowler":"Gayle", "Catch_Status":"No Out","overballcount":"1.2","legality":"le_by"}
+	]
 }
+```
