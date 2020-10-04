@@ -78,4 +78,27 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         return list
     }
 
+    fun updateData() {
+        val db = this.writableDatabase
+        val query = "Select * from " + TABLE_NAME
+        val result = db.rawQuery(query,null)
+        if (result.moveToFirst())
+            do {
+                var cv = ContentValues()
+                cv.put(COL_RUN,(result.getInt(result.getColumnIndex(COL_RUN))+1))
+                db.update(TABLE_NAME,cv, COL_ID + "=? AND " + COL_BATSMAN_NAME + " +?",
+                arrayOf(result.getString(result.getColumnIndex(COL_ID)),
+                    result.getString(result.getColumnIndex(COL_BATSMAN_NAME))))
+            } while (result.moveToNext())
+
+        result.close()
+        db.close()
+    }
+
+    fun deleteData(){
+        val db = this.writableDatabase
+
+        db.delete(TABLE_NAME, null,null)
+    }
+
 }

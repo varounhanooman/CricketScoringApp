@@ -63,7 +63,8 @@ class MainActivity : AppCompatActivity() {
         fun btnRunsClickService(btnValue: Int) {
             ballFrameList.add(BallDataFrame(1,btnValue,"John", "Gayle", "not_out", 0.1f, "le"))
             var db = DataBaseHandler(context)
-            db.insertData(ballFrameList.last())
+            //db.insertData(ballFrameList.last())
+            db.insertData(BallDataFrame(1,btnValue,"John", "Gayle", "not_out", 0.1f, "le"))
             textScore.text = (textScore.text.toString().toInt() + ballFrameList.last().run).toString()
             textRawScore.text = textRawScore.text.toString() + btnValue.toString()
             globalNumBalls = globalNumBalls.inc()

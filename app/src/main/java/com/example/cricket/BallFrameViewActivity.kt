@@ -1,5 +1,6 @@
 package com.example.cricket
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,8 @@ class BallFrameViewActivity : AppCompatActivity() {
 
         val tvResult = findViewById<TextView>(R.id.tvResult)
         val btnRead = findViewById<TextView>(R.id.btnRead)
+        val btnClear = findViewById<TextView>(R.id.btnClear)
+        val btnBack = findViewById<TextView>(R.id.btnBack)
 
         val context = this
         var db = DataBaseHandler(context)
@@ -20,17 +23,28 @@ class BallFrameViewActivity : AppCompatActivity() {
 
             var data = db.readData()
             tvResult.text = ""
-            for (i in 0 until data.size-1){
-                tvResult.append(data.get(i).matchId.toString() + " " +
-                        data.get(i).run.toString() + " " +
-                        data.get(i).batsmanName + " " +
-                        data.get(i).bowlerName + " " +
-                        data.get(i).wicketStatus + " " +
-                        data.get(i).oversBall.toString() + " " +
-                        data.get(i).ballLegalExtra + "\n"
+            for (i in 0 until data.size){
+                tvResult.append(
+                        //"Match: " + data.get(i).matchId.toString() + " " +
+                        "Runs: " + data.get(i).run.toString() + " " +
+                        "Batsman: " + data.get(i).batsmanName + " " +
+                        "Bowler: " + data.get(i).bowlerName + " " +
+                        "Wicket: " + data.get(i).wicketStatus + " " +
+                        "Overs: " + data.get(i).oversBall.toString() + " "
+                        //+ "illegal: " + data.get(i).ballLegalExtra + "\n"
                 )
             }
 
+        }
+
+        btnClear.setOnClickListener{
+            db.deleteData()
+            btnRead.performClick()
+        }
+
+        btnBack.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
