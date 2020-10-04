@@ -8,12 +8,13 @@ import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val context = this
 
         // get reference to button
         val btn0runs =findViewById<Button>(R.id.btn0runs)
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         val btnWide = findViewById<Button>(R.id.btnWide)
         val btnBye = findViewById<Button>(R.id.btnBye)
         val btnLegBye = findViewById<Button>(R.id.btnLegBye)
+        val btnBallFrame = findViewById<Button>(R.id.btnBallFrame)
 
         val textScore = findViewById<TextView>(R.id.textScore)
         val textRawScore = findViewById<TextView>(R.id.textRawScore)
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         val textWickets = findViewById<TextView>(R.id.textWickets)
         val textExtras = findViewById<TextView>(R.id.textExtras)
 
+        /*
         class BallDataFrame constructor(
             var run: Int = 0,
             var batsmanName: String = "",
@@ -46,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             var oversBall: Float = 0f,
             var ballLegalExtra: String = ""
         )
-
+        */
         var ballFrameList = mutableListOf<BallDataFrame>()
 
         var globalNumBalls: Int = 0;
@@ -58,7 +61,9 @@ class MainActivity : AppCompatActivity() {
         //Calculate Legal Runs
 
         fun btnRunsClickService(btnValue: Int) {
-            ballFrameList.add(BallDataFrame(btnValue,"John", "Gayle", "not out", 0.1f, "le"))
+            ballFrameList.add(BallDataFrame(1,btnValue,"John", "Gayle", "not_out", 0.1f, "le"))
+            var db = DataBaseHandler(context)
+            db.insertData(ballFrameList.last())
             textScore.text = (textScore.text.toString().toInt() + ballFrameList.last().run).toString()
             textRawScore.text = textRawScore.text.toString() + btnValue.toString()
             globalNumBalls = globalNumBalls.inc()
@@ -196,6 +201,11 @@ class MainActivity : AppCompatActivity() {
 
         btnNameList.setOnClickListener{
             val intent = Intent(this, NameList::class.java)
+            startActivity(intent)
+        }
+
+        btnBallFrame.setOnClickListener{
+            val intent = Intent(this, BallFrameViewActivity::class.java)
             startActivity(intent)
         }
 
