@@ -19,4 +19,8 @@ class BallDataFrame{
         this.oversBall = oversBall
         this.ballLegalExtra = ballLegalExtra
     }
+
+    constructor(){
+    }
+
 }

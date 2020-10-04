@@ -49,10 +49,33 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         cv.put(COL_OVERS_BALL,ballDataFrame.oversBall)
         cv.put(COL_BALL_LEGAL_EXTRA,ballDataFrame.ballLegalExtra)
         var result = db.insert(TABLE_NAME,null,cv)
-        if(result == -1.toLong())
+        if(result == (-1).toLong())
             Toast.makeText(context, "Failed",Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Success",Toast.LENGTH_SHORT).show()
+    }
+
+    fun readData() : MutableList<BallDataFrame>{
+        var list : MutableList<BallDataFrame> = ArrayList()
+        val db = this.readableDatabase
+        val query = "Select * from " + TABLE_NAME
+        val result = db.rawQuery(query,null)
+        if (result.moveToFirst())
+            do {
+                var ballDataFrame = BallDataFrame()
+                ballDataFrame.matchId = result.getString(result.getColumnIndex(COL_MATCH_ID)).toInt()
+                ballDataFrame.run = result.getString(result.getColumnIndex(COL_RUN)).toInt()
+                ballDataFrame.batsmanName = result.getString(result.getColumnIndex(COL_BATSMAN_NAME))
+                ballDataFrame.bowlerName = result.getString(result.getColumnIndex(COL_BOWLER_NAME))
+                ballDataFrame.wicketStatus = result.getString(result.getColumnIndex(COL_WICKET_STATUS))
+                ballDataFrame.oversBall = result.getString(result.getColumnIndex(COL_OVERS_BALL)).toFloat()
+                ballDataFrame.ballLegalExtra = result.getString(result.getColumnIndex(COL_BALL_LEGAL_EXTRA))
+                list.add(ballDataFrame)
+            } while (result.moveToNext())
+
+        result.close()
+        db.close()
+        return list
     }
 
 }
