@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import java.util.zip.DataFormatException
 
 
 val DATABASE_NAME = "MyDB"
@@ -18,7 +19,7 @@ var COL_WICKET_STATUS = "wicketStatus"
 var COL_OVERS_BALL = "oversBall"
 var COL_BALL_LEGAL_EXTRA = "ballLegalExtra"
 
-val HTEAM_TABLE_NAME = "HomeTeamList" 
+val HTEAM_TABLE_NAME = "HomeTeamData" 
 var HTEAM_COL_PLAYER_ID = "playerId" /*Unique ID Number for each player 
 we have to create a home and away team list which led to me creating the table below
 this way we can also store less data in this table and we can create a query to get the
@@ -140,41 +141,38 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
     }
 
     /***************Team List Handler*******************************************************/
-    fun insertDataTeamList(homeTeamList : HomeTeamList){
-            val db = this.writeableDatabase
-            var cv = ContentValues()
-            cv.put(HTEAM_COL_PLAYER_ID, homeTeamList.playerId)
-            cv.put(HTEAM_COL_FIRST_NAME, homeTeamList.firstName)
-            //cv.put(HTEAM_COL_LAST_NAME, homeTeamList.lastName)
-            cv.put(HTEAM_COL_RSCORED, homeTeamList.runsScored)
-            cv.put(HTEAM_COL_NOUT, homeTeamList.notOut)
-            cv.put(HTEAM_COL_RCONCEDED, homeTeamList.runsConceded)
-            cv.put(HTEAM_COL_WICKETS, homeTeamList.wickets)
-            try {
-                var newHomePlayer = db.insert(HTEAM_TABLE_NAME, null, cv)
-                Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-            }
-            catch(Exception e) {
-                Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
-            }
+    fun insertDataTeamData(homeTeamData : HomeTeamData){
+        val db = this.writableDatabase
+        var cv = ContentValues()
+        //cv.put(HTEAM_COL_PLAYER_ID, homeTeamData.playerId)
+        cv.put(HTEAM_COL_FIRST_NAME, homeTeamData.firstName)
+        //cv.put(HTEAM_COL_LAST_NAME, homeTeamData.lastName)
+        cv.put(HTEAM_COL_RSCORED, homeTeamData.runsScored)
+        cv.put(HTEAM_COL_NOUT, homeTeamData.notOut)
+        cv.put(HTEAM_COL_RCONCEDED, homeTeamData.runsConceded)
+        cv.put(HTEAM_COL_WICKETS, homeTeamData.wickets)
+
+        db.insert(HTEAM_TABLE_NAME, null, cv)
+        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+
     }
 
-    fun readDataTeamList() : MutableList<HomeTeamList>{
-        var list : MutableList<HomeTeamList> = ArrayList()
+    fun readDataTeamData() : MutableList<HomeTeamData>{
+        var list : MutableList<HomeTeamData> = ArrayList()
         val db = this.readableDatabase
         val query = "Select * from " + HTEAM_TABLE_NAME
         val result = db.rawQuery(query,null)
         if (result.moveToFirst())
             do {
-                var homeTeamList = HomeTeamList()
-                homeTeamList.playerId = result.getString(result.getColumnIndex(HTEAM_COL_PLAYER_ID)).toInt()
-                homeTeamList.firstName = result.getString(result.getColumnIndex(HTEAM_COL_FIRST_NAME))
-                //homeTeamList.lastName = result.getString(result.getColumnIndex(HTEAM_COL_LAST_NAME))
-                homeTeamList.runsScored = result.getString(result.getColumnIndex(HTEAM_COL_RSCORED)).toInt()
-                homeTeamList.notOut = result.getString(result.getColumnIndex(HTEAM_COL_NOUT)).toInt()
-                homeTeamList.runsConceded = result.getString(result.getColumnIndex(HTEAM_COL_RCONCEDED)).toInt()
-                homeTeamList.wickets = result.getString(result.getColumnIndex(HTEAM_COL_WICKETS)).toInt()
-                list.add(homeTeamList)
+                var homeTeamData = HomeTeamData()
+                //homeTeamData.playerId = result.getString(result.getColumnIndex(HTEAM_COL_PLAYER_ID)).toInt()
+                homeTeamData.firstName = result.getString(result.getColumnIndex(HTEAM_COL_FIRST_NAME))
+                //homeTeamData.lastName = result.getString(result.getColumnIndex(HTEAM_COL_LAST_NAME))
+                homeTeamData.runsScored = result.getString(result.getColumnIndex(HTEAM_COL_RSCORED)).toInt()
+                homeTeamData.notOut = result.getString(result.getColumnIndex(HTEAM_COL_NOUT)).toInt()
+                homeTeamData.runsConceded = result.getString(result.getColumnIndex(HTEAM_COL_RCONCEDED)).toInt()
+                homeTeamData.wickets = result.getString(result.getColumnIndex(HTEAM_COL_WICKETS)).toInt()
+                list.add(homeTeamData)
             } while (result.moveToNext())
 
         result.close()

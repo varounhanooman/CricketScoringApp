@@ -14,20 +14,32 @@ class NameList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_name_list)
 
+        val context = this
+        var homeTeamList = mutableListOf<HomeTeamData>()
+
         val btnAddBatsman = findViewById<Button>(R.id.btnAddBatsman)
         val btnBack = findViewById<Button>(R.id.btnBack)
         val batsmanName = findViewById<TextView>(R.id.batsmanName)
+        
+        val layout = findViewById<LinearLayout>(R.id.linearLayoutNames)
+        
+        var db = DataBaseHandler(context)
+
+        
 
         //handle button click
         btnAddBatsman.setOnClickListener{
-            val tv_dynamic = TextView(this)
-            tv_dynamic.textSize = 20f
-            tv_dynamic.text = batsmanName.text.toString()
+
+            val playerName = batsmanName.text.toString()
+            homeTeamList.add(HomeTeamData(playerName, 0, 0, 0, 0))
+            db.insertDataTeamData(homeTeamList.last())
+            // val tv_dynamic = TextView(this)
+            // tv_dynamic.textSize = 20f
+            // tv_dynamic.text = batsmanName.text.toString()
             batsmanName.text = ""
             batsmanName.hint = "Enter Batsman Name"
-            val layout = findViewById<LinearLayout>(R.id.linearLayoutNames)
 
-            layout.addView(tv_dynamic)
+            // layout.addView(tv_dynamic)
         }
 
         btnBack.setOnClickListener{
