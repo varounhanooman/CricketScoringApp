@@ -13,6 +13,7 @@ class NameList : AppCompatActivity() {
 
         val context = this
         var homeTeamList = mutableListOf<HomeTeamData>()
+        var homePlayerNameList = mutableListOf<String>()
 
         val btnAddPlayer = findViewById<Button>(R.id.btnAddPlayer)
         val btnBack = findViewById<Button>(R.id.btnBack)
@@ -22,14 +23,14 @@ class NameList : AppCompatActivity() {
         
         var db = DataBaseHandler(context)
 
-        //val tabExists = db.queryTableExists("HomeTeamData")
+        var data = db.readDataTeamData()
 
-        //if (tabExists == 1){
-            //create a list of the names stored in the db
-            //fill in list view
-        //}
-
-        
+        //Populate list before letting the user add new names
+        for (i in 0 until data.size){
+            homePlayerNameList.add(data[i].firstName)
+        }
+        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, homePlayerNameList)
+        playerList.adapter = adapter
 
         //handle button click
         btnAddPlayer.setOnClickListener{
@@ -42,10 +43,11 @@ class NameList : AppCompatActivity() {
             // tv_dynamic.textSize = 20f
             // tv_dynamic.text = playerName.text.toString()
 
-            //add player name to the adapterlist
-
-            /*val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,) //name of list with player names)
-            playerList.adapter = adapter*/
+            //add player name to the player list
+            //homePlayerNameList.add(data[data.size].firstName)
+            //add update adapter for list view
+            adapter.add(data[data.size].firstName)
+            //playerList.adapter = adapter
 
             playerName.text = ""
             playerName.hint = "Enter Player Name"

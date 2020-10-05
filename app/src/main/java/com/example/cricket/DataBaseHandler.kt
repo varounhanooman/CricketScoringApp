@@ -183,7 +183,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
 
     /***********************Queries*********************************************************/
 
-    fun queryTableExists(tableName: String): Int{
+    /*fun queryTableExists(tableName: String): Int{
         val db = this.readableDatabase
         val query = "SELECT DISTINCT tbl_name from sqlite_master where tbl_name = $tableName"
         val cursor = db.rawQuery(query, null)
@@ -195,6 +195,6 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
             cursor.close();
         }
         return 0;
-    }
+    }*/
 
 }
