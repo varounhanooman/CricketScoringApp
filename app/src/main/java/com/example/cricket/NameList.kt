@@ -3,10 +3,7 @@ package com.example.cricket
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 
 class NameList : AppCompatActivity() {
 
@@ -17,28 +14,41 @@ class NameList : AppCompatActivity() {
         val context = this
         var homeTeamList = mutableListOf<HomeTeamData>()
 
-        val btnAddBatsman = findViewById<Button>(R.id.btnAddBatsman)
+        val btnAddPlayer = findViewById<Button>(R.id.btnAddPlayer)
         val btnBack = findViewById<Button>(R.id.btnBack)
-        val batsmanName = findViewById<TextView>(R.id.batsmanName)
+        val playerName = findViewById<TextView>(R.id.playerName)
         
-        val layout = findViewById<LinearLayout>(R.id.linearLayoutNames)
+        val playerList = findViewById<ListView>(R.id.listViewPlayerNames)
         
         var db = DataBaseHandler(context)
+
+        //val tabExists = db.queryTableExists("HomeTeamData")
+
+        //if (tabExists == 1){
+            //create a list of the names stored in the db
+            //fill in list view
+        //}
 
         
 
         //handle button click
-        btnAddBatsman.setOnClickListener{
+        btnAddPlayer.setOnClickListener{
 
-            val playerName = batsmanName.text.toString()
-            homeTeamList.add(HomeTeamData(playerName, 0, 0, 0, 0))
+            val newName = playerName.text.toString()
+            homeTeamList.add(HomeTeamData(newName, 0, 0, 0, 0))
             db.insertDataTeamData(homeTeamList.last())
+            //
             // val tv_dynamic = TextView(this)
             // tv_dynamic.textSize = 20f
-            // tv_dynamic.text = batsmanName.text.toString()
-            batsmanName.text = ""
-            batsmanName.hint = "Enter Batsman Name"
+            // tv_dynamic.text = playerName.text.toString()
 
+            //add player name to the adapterlist
+
+            /*val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,) //name of list with player names)
+            playerList.adapter = adapter*/
+
+            playerName.text = ""
+            playerName.hint = "Enter Player Name"
             // layout.addView(tv_dynamic)
         }
 

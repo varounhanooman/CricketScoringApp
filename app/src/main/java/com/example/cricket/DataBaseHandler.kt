@@ -2,6 +2,7 @@ package com.example.cricket
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
@@ -178,6 +179,22 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         result.close()
         db.close()
         return list
+    }
+
+    /***********************Queries*********************************************************/
+
+    fun queryTableExists(tableName: String): Int{
+        val db = this.readableDatabase
+        val query = "SELECT DISTINCT tbl_name from sqlite_master where tbl_name = $tableName"
+        val cursor = db.rawQuery(query, null)
+        if(cursor!=null) {
+            if(cursor.count >0) {
+                cursor.close();
+                return 1;
+            }
+            cursor.close();
+        }
+        return 0;
     }
 
 }
