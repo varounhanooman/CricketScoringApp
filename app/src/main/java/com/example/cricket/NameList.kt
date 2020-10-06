@@ -25,12 +25,15 @@ class NameList : AppCompatActivity() {
 
         var data = db.readDataTeamData()
 
-        //Populate list before letting the user add new names
-        for (i in 0 until data.size){
-            homePlayerNameList.add(data[i].firstName)
-        }
-        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, homePlayerNameList)
-        playerList.adapter = adapter
+        //if (data.size != 0){
+            //Populate list before letting the user add new names
+            for (i in 0 until data.size){
+                homePlayerNameList.add(data[i].firstName)
+            }
+            var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, homePlayerNameList)
+            playerList.adapter = adapter
+        //}
+
 
         //handle button click
         btnAddPlayer.setOnClickListener{
@@ -46,7 +49,7 @@ class NameList : AppCompatActivity() {
             //add player name to the player list
             //homePlayerNameList.add(data[data.size].firstName)
             //add update adapter for list view
-            adapter.add(data[data.size].firstName)
+            //adapter.add(data[data.size].firstName)
             //playerList.adapter = adapter
 
             playerName.text = ""
