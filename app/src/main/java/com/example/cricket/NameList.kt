@@ -27,11 +27,11 @@ class NameList : AppCompatActivity() {
 
         //if (data.size != 0){
             //Populate list before letting the user add new names
-            for (i in 0 until data.size){
-                homePlayerNameList.add(data[i].firstName)
-            }
-            var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, homePlayerNameList)
-            playerList.adapter = adapter
+        for (i in 0 until data.size){
+            homePlayerNameList.add(data[i].firstName)
+        }
+        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, homePlayerNameList)
+        playerList.adapter = adapter
         //}
 
 
@@ -41,20 +41,17 @@ class NameList : AppCompatActivity() {
             val newName = playerName.text.toString()
             homeTeamList.add(HomeTeamData(newName, 0, 0, 0, 0))
             db.insertDataTeamData(homeTeamList.last())
-            //
-            // val tv_dynamic = TextView(this)
-            // tv_dynamic.textSize = 20f
-            // tv_dynamic.text = playerName.text.toString()
-
+            
+            //Reread database with new info
+            data = db.readDataTeamData()
+            val dbIndex = data.size - 1
             //add player name to the player list
-            //homePlayerNameList.add(data[data.size].firstName)
-            //add update adapter for list view
-            //adapter.add(data[data.size].firstName)
-            //playerList.adapter = adapter
+            homePlayerNameList.add(data[dbIndex].firstName)
+            //update the adapter for the list view
+            adapter.notifyDataSetChanged()
 
             playerName.text = ""
             playerName.hint = "Enter Player Name"
-            // layout.addView(tv_dynamic)
         }
 
         btnBack.setOnClickListener{

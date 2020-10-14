@@ -153,8 +153,11 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         cv.put(HTEAM_COL_RCONCEDED, homeTeamData.runsConceded)
         cv.put(HTEAM_COL_WICKETS, homeTeamData.wickets)
 
-        db.insert(HTEAM_TABLE_NAME, null, cv)
-        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+        val result = db.insert(HTEAM_TABLE_NAME, null, cv)
+        if(result == (-1).toLong())
+            Toast.makeText(context, "Failed",Toast.LENGTH_SHORT).show()
+        else
+            Toast.makeText(context, "Success",Toast.LENGTH_SHORT).show()
 
     }
 
