@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.RadioButton
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val context = this
 
         // get reference to button
+        //scoring buttons
         val btn0runs =findViewById<Button>(R.id.btn0runs)
         val btn1run =findViewById<Button>(R.id.btn1run)
         val btn2runs =findViewById<Button>(R.id.btn2runs)
@@ -24,21 +26,31 @@ class MainActivity : AppCompatActivity() {
         val btn4runs =findViewById<Button>(R.id.btn4runs)
         val btn5runs =findViewById<Button>(R.id.btn5runs)
         val btn6runs =findViewById<Button>(R.id.btn6runs)
+        //wicket buttons
         val btnBowled = findViewById<Button>(R.id.btnBowled)
         val btnCaught = findViewById<Button>(R.id.btnCaught)
         val btnRunOut = findViewById<Button>(R.id.btnRunOut)
+        //extras buttons
         val btnNoBall = findViewById<Button>(R.id.btnNoBall)
         val btnWide = findViewById<Button>(R.id.btnWide)
         val btnBye = findViewById<Button>(R.id.btnBye)
         val btnLegBye = findViewById<Button>(R.id.btnLegBye)
         val btnBallFrame = findViewById<Button>(R.id.btnBallFrame)
 
+        //other buttons
+        val btnSwitchBatsman = findViewById<Button>(R.id.btnSwitchBatsman)
+        val rBtnBatsman1 = findViewById<RadioButton>(R.id.rBtnBatsman1)
+        val rBtnBatsman2 = findViewById<RadioButton>(R.id.rBtnBatsman2)
+        
+        //text views
         val textScore = findViewById<TextView>(R.id.textScore)
         val textRawScore = findViewById<TextView>(R.id.textRawScore)
         val textOvers = findViewById<TextView>(R.id.textOvers)
         val textBalls = findViewById<TextView>(R.id.textBalls)
         val textWickets = findViewById<TextView>(R.id.textWickets)
         val textExtras = findViewById<TextView>(R.id.textExtras)
+        val textBatsman1 = findViewById<TextView>(R.id.textBatsman1)
+        val textBatsman2 = findViewById<TextView>(R.id.textBatsman2)
 
         /*
         class BallDataFrame constructor(
